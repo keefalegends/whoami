@@ -1,4 +1,4 @@
-# Keefa._OS — Frutiger Aero Portfolio Website
+# Keefa._OS — Frutiger Aero Portfolio Website (UNCOMPLETED)
 
 An interactive, responsive personal portfolio web application built with **Next.js 14**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**, themed around the nostalgic **Frutiger Aero / Web 2.0 / Windows XP & Vista Aqua** aesthetic.
 
