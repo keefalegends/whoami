@@ -1,8 +1,8 @@
 export function WaveDivider({ flip = false }: { flip?: boolean }) {
   return (
-    <div className={`w-full overflow-hidden leading-none relative z-10 py-6 my-4 ${flip ? "rotate-180" : ""}`}>
+    <div className={`w-full overflow-hidden leading-none relative z-10 py-2 sm:py-4 my-1 sm:my-2 ${flip ? "rotate-180" : ""}`}>
       <svg
-        className="relative block w-full h-[40px] md:h-[60px]"
+        className="relative block w-full h-[24px] sm:h-[40px] md:h-[50px]"
         viewBox="0 0 1200 120"
         preserveAspectRatio="none"
         fill="none"

@@ -8,7 +8,8 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Scroll behavior and slide snapping are controlled via GSAP FullpageSlider */
+  scroll-padding-top: 5.5rem;
 }
 
 body {
@@ -20,7 +21,7 @@ body {
 
 /* Custom Frutiger Aero scrollbar */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: #e0f2fe;
@@ -65,11 +66,4 @@ body {
   height: 40%;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.02) 100%);
   pointer-events: none;
-}
-
-/* Water bubble effect */
-.bubble-shine {
-  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.4) 25%, rgba(56, 189, 248, 0.2) 60%, rgba(2, 132, 199, 0.4) 100%);
-  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.8), inset 0 -3px 6px rgba(2, 132, 199, 0.4), 0 8px 20px rgba(56, 189, 248, 0.3);
-  backdrop-filter: blur(4px);
 }

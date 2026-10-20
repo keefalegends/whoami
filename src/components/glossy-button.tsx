@@ -24,9 +24,9 @@ export function GlossyButton({
   target,
 }: GlossyButtonProps) {
   const sizeClasses = {
-    sm: "px-4 py-1.5 text-xs font-semibold gap-1.5",
-    md: "px-6 py-2.5 text-sm font-semibold gap-2",
-    lg: "px-8 py-3.5 text-base font-bold gap-3",
+    sm: "px-4 py-2 text-xs font-semibold gap-1.5 min-h-[38px]",
+    md: "px-6 py-2.5 text-sm font-semibold gap-2 min-h-[44px]",
+    lg: "px-8 py-3.5 text-base font-bold gap-2.5 min-h-[48px]",
   };
 
   const variantClasses = {
@@ -40,8 +40,8 @@ export function GlossyButton({
 
   const content = (
     <motion.div
-      whileHover={{ scale: 1.03, y: -1 }}
-      whileTap={{ scale: 0.97, y: 1 }}
+      whileHover={{ scale: 1.02, y: -1 }}
+      whileTap={{ scale: 0.98, y: 1 }}
       className={cn(
         "relative inline-flex items-center justify-center rounded-full transition-all duration-200 cursor-pointer select-none",
         "glossy-reflection",
@@ -51,7 +51,7 @@ export function GlossyButton({
       )}
       onClick={onClick}
     >
-      <span className="relative z-10 flex items-center gap-2 drop-shadow-sm">
+      <span className="relative z-10 flex items-center justify-center gap-2 drop-shadow-sm w-full">
         {children}
       </span>
     </motion.div>
@@ -59,7 +59,12 @@ export function GlossyButton({
 
   if (href) {
     return (
-      <a href={href} target={target} rel={target === "_blank" ? "noopener noreferrer" : undefined}>
+      <a
+        href={href}
+        target={target}
+        rel={target === "_blank" ? "noopener noreferrer" : undefined}
+        className={cn("inline-block", className?.includes("w-full") && "w-full sm:w-auto")}
+      >
         {content}
       </a>
     );

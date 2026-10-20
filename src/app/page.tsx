@@ -1,58 +1,42 @@
 import { AmbientBackground } from "@/components/ambient-background";
 import { Navbar } from "@/components/navbar";
+import { SideNav } from "@/components/side-nav";
 import { Hero } from "@/components/hero";
 import { AboutWindow } from "@/components/about-window";
 import { StackSection } from "@/components/stack-section";
 import { ProjectsSection } from "@/components/projects-section";
-import { JourneySection } from "@/components/journey-section";
 import { ContactSection } from "@/components/contact-section";
-import { FooterTaskbar } from "@/components/footer-taskbar";
-import { WaveDivider } from "@/components/wave-divider";
+import { FullpageSlider } from "@/components/fullpage-slider";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden pb-24">
-      {/* Background Atmosphere */}
+    <main className="relative min-h-screen overflow-x-hidden">
+      {/* GSAP Fullpage Slide Controller */}
+      <FullpageSlider />
+
+      {/* Dynamic Background Atmosphere */}
       <AmbientBackground />
 
       {/* Floating Capsule Navbar */}
       <Navbar />
 
-      {/* Hero Section */}
+      {/* Side Slide Navigator */}
+      <SideNav />
+
+      {/* 1. Hero Slide */}
       <Hero />
 
-      {/* Wave Transition */}
-      <WaveDivider />
-
-      {/* About Section - XP Window Frame */}
+      {/* 2. About Slide - Redesigned Mobile & Desktop */}
       <AboutWindow />
 
-      {/* Wave Transition */}
-      <WaveDivider flip />
-
-      {/* Tech Stack */}
+      {/* 3. Tech Stack Slide */}
       <StackSection />
 
-      {/* Wave Transition */}
-      <WaveDivider />
-
-      {/* Projects */}
+      {/* 4. Projects Slide */}
       <ProjectsSection />
 
-      {/* Wave Transition */}
-      <WaveDivider flip />
-
-      {/* Timeline Journey */}
-      <JourneySection />
-
-      {/* Wave Transition */}
-      <WaveDivider />
-
-      {/* Contact Form & Channels */}
+      {/* 5. Contact Slide + Footer */}
       <ContactSection />
-
-      {/* Bottom Taskbar */}
-      <FooterTaskbar />
     </main>
   );
 }
