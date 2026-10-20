@@ -1,22 +1,10 @@
-# Keefa._OS — Frutiger Aero Portfolio Website
+# Keefa._OS — Frutiger Aero Portfolio Website (UNCOMPLETED)
 
 An interactive, responsive personal portfolio web application built with **Next.js 14**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**, themed around the nostalgic **Frutiger Aero / Web 2.0 / Windows XP & Vista Aqua** aesthetic.
 
 Based on the original design by Keefa Youra Pambudi:
 * **Figma File:** `Q7WWGndjkGynneBLmFKRZe`
 * **Target Host:** [Vercel](https://vercel.com)
-
----
-
-## 🚀 Features
-
-* 🫧 **Frutiger Aero Aesthetic**: Glossy reflective buttons, glassmorphic cards, specular highlights, and floating water bubbles.
-* 🪟 **Retro OS Windows**: Styled after Windows XP & Vista windows with authentic titlebars, controls (minimize/maximize/close), and Internet Explorer address bars for project showcases.
-* ⚙️ **System Modules**: Categorized tech stack panels (Frontend, Backend, DevOps, Tools).
-* ⏳ **Changelog Timeline**: Animated vertical system journey thread tracking key milestones from 2019 to 2026.
-* 📊 **Diagnostics Bento**: Real-time telemetry monitoring System Load, Coffee Level, and Rolling Arch OS status.
-* 📡 **System Messenger**: Vintage MSN / dialog box contact form with interactive transmit feedback and confetti effects.
-* 💻 **Taskbar Footer**: Windows XP/Vista-inspired bottom taskbar with live digital clock, system tray, and functional Start Menu.
 
 ---
 
