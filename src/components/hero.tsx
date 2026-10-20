@@ -1,73 +1,60 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, ArrowDownRight, Send, Download, Terminal } from "lucide-react";
+import { FolderGit2, Mail } from "lucide-react";
 import { GlossyButton } from "./glossy-button";
 
 export function Hero() {
   return (
-    <section id="home" className="relative pt-32 pb-16 md:pt-40 md:pb-24 px-4 flex flex-col items-center text-center">
-      {/* Decorative Bubble Badge */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/70 backdrop-blur-md border border-white/80 shadow-aero-glass mb-6"
-      >
-        <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
-        <span className="text-xs md:text-sm font-semibold text-slate-700 tracking-wide">
-          ✨ System Online · Frutiger Aero v2.0
-        </span>
-      </motion.div>
-
+    <section id="home" className="relative pt-36 pb-16 md:pt-44 md:pb-24 px-4 flex flex-col items-center text-center max-w-4xl mx-auto z-10">
       {/* Main Title */}
       <motion.h1
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.1 }}
-        className="font-outfit font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-slate-900 drop-shadow-sm max-w-4xl"
+        transition={{ duration: 0.5 }}
+        className="font-outfit font-black text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-slate-900 drop-shadow-sm"
       >
         Hey, I&apos;m{" "}
-        <span className="bg-gradient-to-r from-sky-600 via-cyan-500 to-emerald-500 bg-clip-text text-transparent">
+        <span className="bg-gradient-to-r from-sky-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent">
           Keefa.
         </span>
       </motion.h1>
 
       {/* Subtitle */}
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="font-outfit font-bold text-lg sm:text-xl md:text-2xl text-sky-800/90 mt-4 max-w-2xl"
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="font-outfit font-bold text-xl sm:text-2xl md:text-3xl text-sky-900 mt-4 max-w-2xl"
       >
-        Full-Stack Developer · DevOps Enthusiast · Linux User
+        Full-stack developer building scalable web apps, cloud infrastructure, and Linux systems.
       </motion.p>
 
       {/* Description */}
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="font-inter text-sm sm:text-base md:text-lg text-slate-600 mt-5 max-w-2xl leading-relaxed"
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="font-inter text-base sm:text-lg text-slate-700 mt-5 max-w-2xl leading-relaxed"
       >
-        I build web applications, cloud infrastructure, and DevOps pipelines. Based in Indonesia, passionate about open source, Linux, and the crisp aesthetic of late-2000s computing.
+        Based in Indonesia. I work with Next.js, Go, Docker, and Kubernetes, combining modern cloud engineering with the nostalgic clarity of classic Web 2.0 aesthetics.
       </motion.p>
 
       {/* Actions */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
         className="flex flex-wrap items-center justify-center gap-4 mt-8"
       >
         <GlossyButton variant="primary" size="lg" href="#projects">
-          <span>Active Windows</span>
-          <ArrowDownRight className="w-4 h-4" />
+          <FolderGit2 className="w-4 h-4" />
+          <span>View Projects</span>
         </GlossyButton>
 
         <GlossyButton variant="secondary" size="lg" href="#contact">
-          <span>Connect Peripheral</span>
-          <Send className="w-4 h-4 text-sky-600" />
+          <Mail className="w-4 h-4 text-sky-700" />
+          <span>Get in Touch</span>
         </GlossyButton>
       </motion.div>
     </section>

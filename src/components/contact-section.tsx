@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Github, Linkedin, Twitter, MessageSquare, Minus, Square, X, CheckCircle2 } from "lucide-react";
+import { Send, Mail, Github, MessageSquare, Minus, Square, X, CheckCircle2 } from "lucide-react";
 import confetti from "canvas-confetti";
-import { GlossyButton } from "./glossy-button";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -18,8 +17,8 @@ export function ContactSection() {
     e.preventDefault();
     setSubmitted(true);
     confetti({
-      particleCount: 80,
-      spread: 60,
+      particleCount: 60,
+      spread: 50,
       origin: { y: 0.7 },
       colors: ["#38bdf8", "#22d3ee", "#4ade80", "#ffffff"],
     });
@@ -31,57 +30,38 @@ export function ContactSection() {
 
   const socials = [
     {
-      name: "Follow on GitHub",
+      name: "GitHub",
       handle: "@keefalegends",
       icon: Github,
       href: "https://github.com/keefalegends",
-      color: "hover:text-slate-900",
     },
     {
-      name: "Connect on LinkedIn",
-      handle: "Keefa Youra Pambudi",
-      icon: Linkedin,
-      href: "https://linkedin.com",
-      color: "hover:text-blue-600",
-    },
-    {
-      name: "Follow on Twitter",
-      handle: "@keefadev",
-      icon: Twitter,
-      href: "https://twitter.com",
-      color: "hover:text-sky-500",
-    },
-    {
-      name: "Direct Electronic Mail",
+      name: "Email",
       handle: "contact@keefa.dev",
       icon: Mail,
       href: "mailto:contact@keefa.dev",
-      color: "hover:text-emerald-600",
     },
   ];
 
   return (
-    <section id="contact" className="relative py-16 px-4 max-w-6xl mx-auto z-10">
+    <section id="contact" className="relative py-16 px-4 max-w-5xl mx-auto z-10">
       <div className="text-center mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 backdrop-blur-sm border border-white text-sky-800 text-xs font-bold mb-3 shadow-sm">
-          <span>📡 Transmission Link</span>
-        </div>
         <h2 className="font-outfit font-black text-3xl md:text-5xl text-slate-900 tracking-tight">
-          Connect Peripheral
+          Get in Touch
         </h2>
-        <p className="font-inter text-slate-600 text-sm md:text-base mt-2 max-w-xl mx-auto">
-          Dispatch inquiries, establish collaboration requests, or exchange digital signals.
+        <p className="font-inter text-slate-700 text-sm md:text-base mt-2 max-w-xl mx-auto">
+          Send a message for collaboration inquiries, consulting, or project discussion.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        {/* Left Column: System Messenger Form */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        {/* Left: Message Dialog Form */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
+          initial={{ opacity: 0, x: -15 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="lg:col-span-7 rounded-2xl overflow-hidden shadow-xp-window border border-white/90 bg-white/85 backdrop-blur-xl"
+          transition={{ duration: 0.4 }}
+          className="md:col-span-7 rounded-2xl overflow-hidden shadow-xp-window border border-white/90 bg-white/90 backdrop-blur-md"
         >
           {/* XP Messenger Title Bar */}
           <div className="bg-xp-titlebar px-4 py-2.5 flex items-center justify-between select-none">
@@ -90,7 +70,7 @@ export function ContactSection() {
                 <MessageSquare className="w-2.5 h-2.5" />
               </div>
               <span className="font-outfit font-bold text-xs text-white drop-shadow">
-                System Messenger - Send Message
+                New Message
               </span>
             </div>
 
@@ -111,71 +91,74 @@ export function ContactSection() {
           <form onSubmit={handleSubmit} className="p-6 space-y-4">
             {submitted ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 className="py-10 text-center space-y-3"
               >
-                <div className="w-14 h-14 rounded-full bg-emerald-100 border-2 border-emerald-400 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
-                  <CheckCircle2 className="w-7 h-7" />
+                <div className="w-12 h-12 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
+                  <CheckCircle2 className="w-6 h-6" />
                 </div>
                 <h3 className="font-outfit font-black text-xl text-slate-900">
-                  Signal Transmitted Successfully!
+                  Message Sent
                 </h3>
                 <p className="text-sm font-inter text-slate-600 max-w-sm mx-auto">
-                  Thank you for reaching out. Keefa will respond to your transmission promptly.
+                  Thank you for reaching out. I will get back to your message shortly.
                 </p>
               </motion.div>
             ) : (
               <>
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5">
-                    YOUR INTERFACE NAME
+                  <label htmlFor="name-input" className="block text-xs font-bold text-slate-700 mb-1.5">
+                    Your Name
                   </label>
                   <input
+                    id="name-input"
                     type="text"
                     required
-                    placeholder="Keefa Youra"
+                    placeholder="Jane Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/90 border border-slate-200 text-slate-800 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 shadow-inner"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500 shadow-inner"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5">
-                    ELECTRONIC EMAIL ADDRESS
+                  <label htmlFor="email-input" className="block text-xs font-bold text-slate-700 mb-1.5">
+                    Your Email
                   </label>
                   <input
+                    id="email-input"
                     type="email"
                     required
-                    placeholder="visitor@system.io"
+                    placeholder="jane@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/90 border border-slate-200 text-slate-800 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 shadow-inner"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500 shadow-inner"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1.5">
-                    MESSAGE BODY
+                  <label htmlFor="message-input" className="block text-xs font-bold text-slate-700 mb-1.5">
+                    Message
                   </label>
                   <textarea
+                    id="message-input"
                     required
                     rows={4}
-                    placeholder="Let's build something awesome together..."
+                    placeholder="Hello Keefa, let's discuss a project..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/90 border border-slate-200 text-slate-800 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 shadow-inner resize-none"
+                    className="w-full px-3.5 py-2.5 rounded-lg bg-white border border-slate-300 text-slate-900 text-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500/40 focus:border-sky-500 shadow-inner resize-none"
                   />
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-1">
                   <button
                     type="submit"
-                    className="w-full relative py-3 rounded-xl bg-gradient-to-b from-sky-400 via-sky-600 to-sky-700 text-white font-bold text-sm shadow-glossy-btn border border-sky-300/60 hover:from-sky-300 hover:to-sky-600 active:scale-[0.99] transition-all glossy-reflection flex items-center justify-center gap-2"
+                    className="w-full py-2.5 rounded-lg bg-gradient-to-b from-sky-500 to-sky-700 text-white font-bold text-sm shadow-md hover:from-sky-400 hover:to-sky-600 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Transmit Message</span>
+                    <span>Send Message</span>
                   </button>
                 </div>
               </>
@@ -183,24 +166,24 @@ export function ContactSection() {
           </form>
         </motion.div>
 
-        {/* Right Column: System Outputs */}
+        {/* Right: Direct Channels */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, x: 15 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="lg:col-span-5 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/90 p-6 shadow-aero-card glass-specular space-y-6"
+          transition={{ duration: 0.4 }}
+          className="md:col-span-5 rounded-2xl bg-white/90 backdrop-blur-md border border-white/90 p-6 shadow-aero-card space-y-5"
         >
           <div>
-            <h3 className="font-outfit font-black text-2xl text-slate-900 mb-2">
-              System Outputs
+            <h3 className="font-outfit font-black text-xl text-slate-900 mb-2">
+              Direct Channels
             </h3>
-            <p className="font-inter text-xs md:text-sm text-slate-600 leading-relaxed">
-              Looking to upgrade your development workflow, automate standard builds, or simply swap classic memories? Ping my nodes on these active bands.
+            <p className="font-inter text-sm text-slate-600 leading-relaxed">
+              If you prefer reaching out directly or inspecting my repositories, you can connect through these platforms.
             </p>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-2.5">
             {socials.map((soc) => {
               const Icon = soc.icon;
               return (
@@ -209,34 +192,27 @@ export function ContactSection() {
                   href={soc.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between p-3.5 rounded-xl bg-white/80 border border-sky-100 hover:border-sky-300 hover:bg-sky-50/50 transition-all shadow-sm group"
+                  className="flex items-center justify-between p-3 rounded-xl bg-slate-50 border border-slate-200/80 hover:border-sky-300 hover:bg-sky-50/50 transition-colors group"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center group-hover:scale-105 transition-transform">
+                    <div className="w-8 h-8 rounded-lg bg-white border border-slate-200 text-slate-700 flex items-center justify-center">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="font-outfit font-bold text-xs md:text-sm text-slate-800">
+                      <h4 className="font-outfit font-bold text-sm text-slate-800">
                         {soc.name}
                       </h4>
-                      <p className="text-[11px] font-mono text-slate-500">
+                      <p className="text-xs font-mono text-slate-500">
                         {soc.handle}
                       </p>
                     </div>
                   </div>
-                  <span className="text-xs font-bold text-sky-600 group-hover:translate-x-1 transition-transform">
+                  <span className="text-xs font-bold text-sky-700 group-hover:translate-x-1 transition-transform">
                     →
                   </span>
                 </a>
               );
             })}
-          </div>
-
-          <div className="p-4 rounded-xl bg-gradient-to-r from-emerald-50 to-cyan-50 border border-emerald-200/60 flex items-center gap-3">
-            <span className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-            <p className="text-xs font-inter text-slate-700">
-              <span className="font-bold text-emerald-800">Available for hire</span> & freelance infrastructure development.
-            </p>
           </div>
         </motion.div>
       </div>

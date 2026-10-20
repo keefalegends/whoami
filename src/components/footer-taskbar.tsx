@@ -36,10 +36,10 @@ export function FooterTaskbar() {
       <AnimatePresence>
         {startMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            initial={{ opacity: 0, y: 15, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="absolute bottom-12 left-2 w-72 rounded-t-xl rounded-br-xl overflow-hidden shadow-2xl border-2 border-[#123eaf] bg-white/95 backdrop-blur-2xl z-50"
+            exit={{ opacity: 0, y: 15, scale: 0.98 }}
+            className="absolute bottom-12 left-2 w-72 rounded-t-xl rounded-br-xl overflow-hidden shadow-2xl border-2 border-[#123eaf] bg-white z-50"
           >
             {/* Start Menu Header */}
             <div className="bg-xp-titlebar p-3 flex items-center gap-3 text-white">
@@ -48,7 +48,7 @@ export function FooterTaskbar() {
               </div>
               <div>
                 <h4 className="font-outfit font-black text-sm drop-shadow">Keefa Youra Pambudi</h4>
-                <p className="text-[11px] text-sky-200">Keefa._OS Administrator</p>
+                <p className="text-[11px] text-sky-200">Software Engineer</p>
               </div>
             </div>
 
@@ -60,7 +60,7 @@ export function FooterTaskbar() {
                 className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:bg-sky-100 hover:text-sky-900 transition-colors"
               >
                 <User className="w-4 h-4 text-sky-600" />
-                <span>About System Profile</span>
+                <span>About Me</span>
               </a>
               <a
                 href="#stack"
@@ -68,7 +68,7 @@ export function FooterTaskbar() {
                 className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:bg-sky-100 hover:text-sky-900 transition-colors"
               >
                 <Layers className="w-4 h-4 text-cyan-600" />
-                <span>Tech Stack Specifications</span>
+                <span>Tech Stack</span>
               </a>
               <a
                 href="#projects"
@@ -76,7 +76,7 @@ export function FooterTaskbar() {
                 className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:bg-sky-100 hover:text-sky-900 transition-colors"
               >
                 <FolderGit2 className="w-4 h-4 text-indigo-600" />
-                <span>Active Project Windows</span>
+                <span>Projects</span>
               </a>
               <a
                 href="#contact"
@@ -84,7 +84,7 @@ export function FooterTaskbar() {
                 className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-xs font-bold text-slate-700 hover:bg-sky-100 hover:text-sky-900 transition-colors"
               >
                 <Send className="w-4 h-4 text-emerald-600" />
-                <span>Send Instant Message</span>
+                <span>Contact</span>
               </a>
             </div>
 
@@ -95,17 +95,17 @@ export function FooterTaskbar() {
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-white border border-slate-300 text-[11px] font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm"
               >
                 <ArrowUp className="w-3 h-3 text-sky-600" />
-                <span>Scroll to Top</span>
+                <span>Back to Top</span>
               </button>
-              <span className="text-[10px] font-bold text-slate-500">v2.0 Aero</span>
+              <span className="text-[10px] font-mono text-slate-600">whoami v1.0</span>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Main Taskbar Bar */}
+      {/* Main Taskbar */}
       <div className="h-11 bg-gradient-to-b from-[#2463eb] via-[#1d52d4] to-[#123eaf] border-t-2 border-[#4d84f7] shadow-[0_-4px_20px_rgba(0,0,0,0.15)] flex items-center justify-between px-2 select-none">
-        {/* Left: Classic Windows Style Start Button */}
+        {/* Left: Start Button */}
         <div className="flex items-center gap-2">
           <button
             onClick={() => setStartMenuOpen(!startMenuOpen)}
@@ -120,33 +120,22 @@ export function FooterTaskbar() {
             </span>
           </button>
 
-          {/* Copyright & Info */}
           <div className="hidden sm:flex items-center gap-2 px-3 text-white/90 text-xs font-inter drop-shadow">
             <span>© 2026 Keefa Youra Pambudi.</span>
-            <span className="text-sky-300 text-[11px] hidden md:inline">
-              Built with ♥ and too much nostalgia.
-            </span>
           </div>
         </div>
 
         {/* Right: System Tray */}
         <div className="h-8 px-3 rounded-lg bg-[#0d3da3]/80 border border-[#4d84f7]/40 flex items-center gap-3 text-white text-xs font-mono shadow-inner">
           <div className="hidden sm:flex items-center gap-2 text-sky-200">
-            <Volume2 className="w-3.5 h-3.5 hover:text-white transition-colors cursor-pointer" />
-            <Wifi className="w-3.5 h-3.5 hover:text-white transition-colors cursor-pointer" />
-            <Shield className="w-3.5 h-3.5 hover:text-white transition-colors cursor-pointer" />
+            <Volume2 className="w-3.5 h-3.5" />
+            <Wifi className="w-3.5 h-3.5" />
+            <Shield className="w-3.5 h-3.5" />
           </div>
 
           <div className="h-4 w-[1px] bg-sky-400/40 hidden sm:block" />
 
-          <div className="flex items-center gap-1.5 font-sans font-bold text-[11px] text-emerald-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="hidden md:inline">SYSTEM ONLINE: 100.0%</span>
-          </div>
-
-          <div className="h-4 w-[1px] bg-sky-400/40" />
-
-          {/* Real-time Digital Clock */}
+          {/* Real-time Clock */}
           <span className="text-white font-bold tracking-tight text-[11px]">
             {time || "12:00:00 PM"}
           </span>
