@@ -23,6 +23,15 @@ export function FullpageSlider() {
     isAnimatingRef.current = true;
     currentIndexRef.current = index;
 
+    // Automatically trigger smooth navbar close when sliding to any lower section
+    if (typeof window !== "undefined") {
+      if (index > 0) {
+        window.dispatchEvent(new CustomEvent("navbar-close"));
+      } else {
+        window.dispatchEvent(new CustomEvent("navbar-open"));
+      }
+    }
+
     // Use GSAP ScrollToPlugin for silky smooth slide transition
     gsap.to(window, {
       duration: 0.85,
@@ -71,7 +80,10 @@ export function FullpageSlider() {
       preventDefault: true,
       ignore: "input, textarea, select, a, button, [role='button']",
       onUp: () => {
-        // User scrolls down or swipes up -> glide to next section
+        // User scrolls down or swipes up -> close navbar and glide to next section
+        if (typeof window !== "undefined") {
+          window.dispatchEvent(new CustomEvent("navbar-close"));
+        }
         if (!isAnimatingRef.current && currentIndexRef.current < SECTION_IDS.length - 1) {
           goToSection(currentIndexRef.current + 1);
         }
