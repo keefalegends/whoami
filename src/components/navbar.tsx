@@ -42,7 +42,7 @@ export function Navbar() {
             <Terminal className="w-4 h-4" />
           </div>
           <span className="font-outfit font-black text-lg tracking-tight text-slate-800">
-            Keefa._OS
+            Keefa.
           </span>
         </a>
 

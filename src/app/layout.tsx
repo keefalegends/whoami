@@ -17,12 +17,12 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Keefa Youra Pambudi | Keefa._OS Portfolio",
+  title: "Keefa Youra Pambudi | Keefa. Portfolio",
   description:
     "Full-Stack Developer · DevOps Enthusiast · Linux User based in Indonesia. Exploring the crisp aquatic Frutiger Aero aesthetic with high performance web tech.",
   keywords: [
     "Keefa Youra Pambudi",
-    "Keefa._OS",
+    "Keefa.",
     "Full-Stack Developer",
     "DevOps",
     "Linux Enthusiast",
@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Keefa Youra Pambudi" }],
   openGraph: {
-    title: "Keefa Youra Pambudi | Keefa._OS",
+    title: "Keefa Youra Pambudi | Keefa.",
     description:
       "Full-Stack Developer · DevOps Enthusiast · Linux User. Built with nostalgic Frutiger Aero aqua aesthetic.",
     url: "https://keefaos.dev",
-    siteName: "Keefa._OS Portfolio",
+    siteName: "Keefa. Portfolio",
     locale: "id_ID",
     type: "website",
   },
