@@ -31,7 +31,7 @@ export function StackSection() {
       description: "Development environment and server administration",
       icon: Wrench,
       color: "from-emerald-500 to-green-600",
-      skills: ["Arch Linux", "Git & GitHub", "Nginx", "Redis", "Bash Scripting"],
+      skills: ["Ubuntu", "Git & GitHub", "Nginx", "Redis", "Bash Scripting"],
     },
   ];
 
