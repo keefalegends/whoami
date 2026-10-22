@@ -83,13 +83,14 @@ export function FullpageSlider() {
     }
 
     // GSAP Observer normalizes wheel and touch gestures across desktop, trackpads, and mobile
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
     const obs = Observer.create({
       target: window,
-      type: "wheel,touch",
+      type: isMobile ? "wheel,touch" : "wheel",
       wheelSpeed: -1, // Inverts mouse wheel delta so wheel down matches touch swipe up (both call onUp)
-      tolerance: 15,
-      preventDefault: true,
-      ignore: "input, textarea, select, a, button, [role='button']",
+      tolerance: isMobile ? 35 : 15,
+      preventDefault: !isMobile, // Do not block native browser kinetic touch scroll on mobile
+      ignore: "input, textarea, select, a, button, [role='button'], [role='dialog']",
       onUp: () => {
         // Do not scroll slides if lightbox modal is open
         if (document.querySelector(".cursor-zoom-out") || document.querySelector("[role='dialog']")) {

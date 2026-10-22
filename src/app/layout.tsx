@@ -5,14 +5,14 @@ import "./globals.css";
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700", "900"],
   display: "swap",
 });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "600", "700"],
   display: "swap",
 });
 
@@ -47,7 +47,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${inter.variable}`}>
+    <html lang="id" className={`${outfit.variable} ${inter.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var h=navigator.hardwareConcurrency,m=navigator.deviceMemory,c=navigator.connection;if((h&&h<=4)||(m&&m<=3)||(c&&c.saveData)){document.documentElement.classList.add('lite-mode');}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-aero-gradient text-slate-900 antialiased selection:bg-cyan-200 selection:text-cyan-900">
         {children}
       </body>

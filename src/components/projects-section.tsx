@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ExternalLink,
@@ -41,7 +41,7 @@ const REAL_PROJECTS: Project[] = [
     description:
       "A freelance Point of Sale and inventory management platform for Toko Perhiasan Mas Hikmah 2. Features live gold buyback price calculations, multi-branch stock tracking, and thermal receipt printing.",
     tags: ["Laravel", "PHP", "MySQL", "POS & Nota", "REST API"],
-    images: ["/projects/hikmah-gold1.png", "/projects/hikmah-gold2.png"],
+    images: ["/projects/hikmah-gold1.webp", "/projects/hikmah-gold2.webp"],
     githubUrl: "https://github.com/keefalegends/HIKMAH-2-Perhiasan-Emas",
     isPrivate: true,
     badge: "Private Client Project",
@@ -55,7 +55,7 @@ const REAL_PROJECTS: Project[] = [
     description:
       "A modern personal finance & cash flow tracking web application. Engineered with multi-user authentication, Supabase cloud database syncing, Prisma ORM, and offline PWA service worker caching.",
     tags: ["Next.js", "TypeScript", "Prisma", "Supabase PostgreSQL", "Tailwind CSS"],
-    images: ["/projects/uang-gwa1.png", "/projects/uang-gwa2.png"],
+    images: ["/projects/uang-gwa1.webp", "/projects/uang-gwa2.webp"],
     githubUrl: "https://github.com/keefalegends/UangGwa",
     demoUrl: "https://uang-gwa.vercel.app",
     isPrivate: true,
@@ -70,7 +70,7 @@ const REAL_PROJECTS: Project[] = [
     description:
       "A hyper-minimalist, distraction-free typing speed test platform featuring real-time multiplayer arena battles inspired by Monkeytype. Powered by Vue 3, Laravel, Docker Compose, and Caddy.",
     tags: ["Vue 3", "Laravel", "Docker Compose", "Caddy", "WebSockets"],
-    images: ["/projects/keetype1.png", "/projects/keetype2.png"],
+    images: ["/projects/keetype1.webp", "/projects/keetype2.webp"],
     githubUrl: "https://github.com/keefalegends/KeeType",
     demoUrl: "https://keetype.my.id",
     isPrivate: false,
@@ -85,7 +85,7 @@ const REAL_PROJECTS: Project[] = [
     description:
       "An interactive cafe discovery platform built in collaboration with PT Desnet. Features Google Maps-style geospatial exploration, cafe business claiming workflows, and curated editorial articles.",
     tags: ["Fullstack Web", "Docker", "Interactive Maps", "MySQL", "Media Engine"],
-    images: ["/projects/spotkafe1.png", "/projects/spotkafe2.png"],
+    images: ["/projects/spotkafe1.webp", "/projects/spotkafe2.webp"],
     githubUrl: "https://github.com/Botakciter17/Spotcafe",
     demoUrl: "https://spotcafe.bagusarya.me",
     isPrivate: true,
@@ -98,6 +98,17 @@ const REAL_PROJECTS: Project[] = [
 function ProjectCard({ project }: { project: Project }) {
   const [activeImgIdx, setActiveImgIdx] = useState(0);
   const [isZoomed, setIsZoomed] = useState(false);
+
+  useEffect(() => {
+    if (!isZoomed) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsZoomed(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isZoomed]);
 
   const prevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -173,6 +184,7 @@ function ProjectCard({ project }: { project: Project }) {
                   alt={`${project.name} preview ${activeImgIdx + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
                   className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
                 />
               </motion.div>
@@ -311,6 +323,9 @@ function ProjectCard({ project }: { project: Project }) {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${project.name} image preview`}
               onClick={(e) => e.stopPropagation()}
               className="relative max-w-5xl w-full rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-slate-900"
             >

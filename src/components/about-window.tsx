@@ -58,7 +58,7 @@ export function AboutWindow() {
               <div className="relative w-14 h-14 rounded-xl bg-gradient-to-tr from-sky-400 via-cyan-400 to-emerald-400 p-[2px] shadow-sm flex-shrink-0">
                 <div className="relative w-full h-full rounded-[10px] overflow-hidden bg-slate-900">
                   <Image
-                    src="/me-mobile.jpg"
+                    src="/me-mobile.webp"
                     alt="Keefa Youra Pambudi"
                     fill
                     sizes="56px"
@@ -189,7 +189,7 @@ export function AboutWindow() {
                       <div className="relative w-full aspect-[3/4] max-w-[210px] md:max-w-none rounded-2xl overflow-hidden p-[2.5px] bg-gradient-to-b from-sky-400 via-cyan-400 to-blue-500 shadow-aero-card group">
                         <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-900">
                           <Image
-                            src="/me.jpg"
+                            src="/me.webp"
                             alt="Keefa Youra Pambudi"
                             fill
                             sizes="(max-width: 768px) 100vw, 240px"

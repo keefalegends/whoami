@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, Menu, X } from "lucide-react";
 
@@ -8,6 +8,31 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  // Close mobile dropdown on outside click or Escape key
+  useEffect(() => {
+    if (!isOpen || !isMobile) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, isMobile]);
 
   // Initialize responsive state on mount
   useEffect(() => {
@@ -100,7 +125,7 @@ export function Navbar() {
       {/* Closes TO THE RIGHT into the 3-line button; expands to left    */}
       {/* ============================================================== */}
       <header className="fixed top-4 right-4 sm:right-6 md:right-8 z-50 flex items-center justify-end pointer-events-auto">
-        <div className="relative flex items-center justify-end">
+        <div ref={navRef} className="relative flex items-center justify-end">
           {/* Main Expanding Capsule */}
           <motion.nav
             layout
@@ -160,6 +185,8 @@ export function Navbar() {
               className="w-10 h-10 rounded-full bg-white/90 hover:bg-white text-slate-700 hover:text-sky-700 border border-slate-200/80 shadow-sm transition-all hover:scale-105 active:scale-95 flex items-center justify-center flex-shrink-0 group"
               title={isOpen ? "Tutup Navbar" : "Buka Navbar (3 Garis Horizontal)"}
               aria-label="Toggle Navigation Menu"
+              aria-expanded={isOpen}
+              aria-haspopup="true"
             >
               <Menu className="w-4 h-4 text-slate-700 group-hover:text-sky-600 transition-colors" />
             </button>

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Mail, Github, MessageSquare, Minus, Square, X, CheckCircle2, Linkedin, Instagram } from "lucide-react";
-import confetti from "canvas-confetti";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -13,15 +12,20 @@ export function ContactSection() {
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    confetti({
-      particleCount: 60,
-      spread: 50,
-      origin: { y: 0.7 },
-      colors: ["#38bdf8", "#22d3ee", "#4ade80", "#ffffff"],
-    });
+    try {
+      const confetti = (await import("canvas-confetti")).default;
+      confetti({
+        particleCount: 60,
+        spread: 50,
+        origin: { y: 0.7 },
+        colors: ["#38bdf8", "#22d3ee", "#4ade80", "#ffffff"],
+      });
+    } catch {
+      // Fallback gracefully if confetti fails
+    }
     setTimeout(() => {
       setSubmitted(false);
       setFormData({ name: "", email: "", message: "" });
