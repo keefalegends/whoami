@@ -43,11 +43,11 @@ export function AboutWindow() {
             <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-400 via-cyan-400 to-emerald-400 p-[2px] shadow-sm flex-shrink-0">
               <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-900">
                 <Image
-                  src="/me.jpg"
+                  src="/me-mobile.jpg"
                   alt="Keefa Youra Pambudi"
                   fill
                   sizes="64px"
-                  className="object-cover object-[center_25%]"
+                  className="object-cover object-center"
                 />
               </div>
               {/* Online pulse indicator */}
@@ -177,26 +177,10 @@ export function AboutWindow() {
                             alt="Keefa Youra Pambudi"
                             fill
                             sizes="(max-width: 768px) 100vw, 240px"
-                            className="object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-105"
+                            className="object-cover object-[center_60%] transition-transform duration-500 group-hover:scale-105"
                           />
                           {/* Subtle Aero Glass Gloss Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-white/10 pointer-events-none" />
-
-                          {/* ID Badge Pill inside Photo */}
-                          <div className="absolute bottom-2 left-2 right-2 p-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-white/80 shadow-sm flex items-center justify-between">
-                            <div className="min-w-0">
-                              <p className="font-outfit font-extrabold text-[11px] text-slate-900 truncate">
-                                Keefa
-                              </p>
-                              <p className="text-[9px] text-slate-500 font-mono flex items-center gap-1">
-                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                Active System
-                              </p>
-                            </div>
-                            <span className="px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 text-[9px] font-bold font-mono">
-                              ID: 01
-                            </span>
-                          </div>
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-white/10 pointer-events-none" />
                         </div>
                       </div>
                     </div>
