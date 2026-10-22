@@ -79,7 +79,7 @@ const REAL_PROJECTS: Project[] = [
   },
   {
     titleBar: "Internet Explorer - SpotKafe Discovery",
-    displayUrl: "spotcafe.desnet.id",
+    displayUrl: "spotcafe.bagusarya.me",
     name: "SpotKafe",
     shortName: "SpotKafe",
     description:
@@ -87,6 +87,7 @@ const REAL_PROJECTS: Project[] = [
     tags: ["Fullstack Web", "Docker", "Interactive Maps", "MySQL", "Media Engine"],
     images: ["/projects/spotkafe1.png", "/projects/spotkafe2.png"],
     githubUrl: "https://github.com/Botakciter17/Spotcafe",
+    demoUrl: "https://spotcafe.bagusarya.me",
     isPrivate: true,
     badge: "Collaboration PT Desnet",
     accentColor: "from-indigo-500 to-purple-600",
