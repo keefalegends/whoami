@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Minus, Square, X, MapPin, Cloud, Terminal, RotateCcw, Code2, Server } from "lucide-react";
+import { User, Minus, Square, X, MapPin, Cloud, RotateCcw, Code2, Server } from "lucide-react";
 import Image from "next/image";
 
 export function AboutWindow() {
@@ -15,8 +15,8 @@ export function AboutWindow() {
       className="min-h-dvh flex flex-col justify-center snap-start relative py-8 sm:py-16 px-4 sm:px-6 max-w-4xl mx-auto z-10 w-full"
     >
       {/* ============================================================== */}
-      {/* MOBILE-FIRST MODERN AERO VIEW (visible on mobile < 640px)      */}
-      {/* Clean, spacious, native-feeling, NO forced desktop titlebars   */}
+      {/* MOBILE WINDOWS XP VIEW (visible on mobile < 640px)             */}
+      {/* Authentic classic window frame matching desktop aesthetic       */}
       {/* ============================================================== */}
       <div className="block sm:hidden w-full">
         <motion.div
@@ -24,70 +24,86 @@ export function AboutWindow() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="rounded-3xl bg-white/85 backdrop-blur-2xl border border-white/95 p-6 shadow-aero-card flex flex-col gap-5 w-full"
+          className="rounded-2xl overflow-hidden shadow-xp-window border border-white/95 bg-white/90 backdrop-blur-xl w-full"
         >
-          {/* Eyebrow / Category Tag */}
-          <div className="flex items-center justify-between">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-sky-100/80 border border-sky-200/90 text-sky-900 font-outfit font-black text-[11px] tracking-wider uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
-              About Keefa
-            </span>
-            <span className="flex items-center gap-1 text-[11px] font-semibold text-slate-500 font-inter">
-              <MapPin className="w-3 h-3 text-emerald-600" />
-              Indonesia
-            </span>
-          </div>
-
-          {/* Profile Header with Real Avatar */}
-          <div className="flex items-center gap-3.5">
-            <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-400 via-cyan-400 to-emerald-400 p-[2px] shadow-sm flex-shrink-0">
-              <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-900">
-                <Image
-                  src="/me-mobile.jpg"
-                  alt="Keefa Youra Pambudi"
-                  fill
-                  sizes="64px"
-                  className="object-cover object-center"
-                />
+          {/* Windows XP Aero Title Bar */}
+          <div className="bg-xp-titlebar px-3.5 py-2 flex items-center justify-between select-none gap-2">
+            <div className="flex items-center gap-2 min-w-0 flex-1">
+              <div className="w-4 h-4 rounded-full bg-sky-300/30 flex items-center justify-center text-white ring-1 ring-white/50 flex-shrink-0">
+                <User className="w-2.5 h-2.5 drop-shadow" />
               </div>
-              {/* Online pulse indicator */}
-              <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow-sm flex items-center justify-center" />
+              <span className="font-outfit font-bold text-xs tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] truncate">
+                About Me - Keefa Profile
+              </span>
             </div>
-            <div className="min-w-0">
-              <h2 className="font-outfit font-black text-xl text-slate-900 tracking-tight leading-tight">
-                Keefa Youra Pambudi
-              </h2>
-              <p className="text-xs font-semibold text-slate-600 mt-0.5">
-                Software &amp; Cloud Engineer
-              </p>
+
+            {/* Window Controls */}
+            <div className="flex items-center gap-1 flex-shrink-0">
+              <div className="w-4 h-3.5 rounded-[3px] bg-gradient-to-b from-sky-400 to-sky-600 border border-sky-200/50 flex items-center justify-center text-white shadow-inner">
+                <Minus className="w-2 h-2" />
+              </div>
+              <div className="w-4 h-3.5 rounded-[3px] bg-gradient-to-b from-sky-400 to-sky-600 border border-sky-200/50 flex items-center justify-center text-white shadow-inner">
+                <Square className="w-1.5 h-1.5" />
+              </div>
+              <div className="w-4 h-3.5 rounded-[3px] bg-gradient-to-b from-red-400 to-red-600 border border-red-300/60 flex items-center justify-center text-white shadow-inner">
+                <X className="w-2 h-2" />
+              </div>
             </div>
           </div>
 
-          {/* Spacious Bio Paragraph */}
-          <p className="font-inter text-sm text-slate-700 leading-relaxed">
-            I engineer web applications, cloud infrastructure, and automation workflows. Based in Indonesia, working primarily with Linux terminal environments, Docker containers, Next.js, and Go.
-          </p>
+          {/* Window Body */}
+          <div className="p-4 sm:p-5 flex flex-col gap-3.5">
+            {/* Profile Header with Real Avatar */}
+            <div className="flex items-center gap-3">
+              <div className="relative w-14 h-14 rounded-xl bg-gradient-to-tr from-sky-400 via-cyan-400 to-emerald-400 p-[2px] shadow-sm flex-shrink-0">
+                <div className="relative w-full h-full rounded-[10px] overflow-hidden bg-slate-900">
+                  <Image
+                    src="/me-mobile.jpg"
+                    alt="Keefa Youra Pambudi"
+                    fill
+                    sizes="56px"
+                    className="object-cover object-center"
+                  />
+                </div>
+                {/* Online pulse indicator */}
+                <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-white shadow-sm flex items-center justify-center" />
+              </div>
+              <div className="min-w-0">
+                <h2 className="font-outfit font-black text-lg text-slate-900 tracking-tight leading-tight">
+                  Keefa Youra Pambudi
+                </h2>
+                <p className="text-[11px] font-semibold text-slate-600 mt-0.5">
+                  Software &amp; Cloud Engineer
+                </p>
+              </div>
+            </div>
 
-          {/* Core Competencies Badges */}
-          <div className="flex flex-wrap gap-2 pt-1">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-50 border border-sky-200/80 text-sky-900 text-xs font-semibold">
-              <Code2 className="w-3.5 h-3.5 text-sky-600 flex-shrink-0" />
-              Web Apps (Next.js &amp; Go)
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-cyan-50 border border-cyan-200/80 text-cyan-900 text-xs font-semibold">
-              <Server className="w-3.5 h-3.5 text-cyan-600 flex-shrink-0" />
-              Cloud &amp; DevOps (Docker, K8s)
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
-              <Terminal className="w-3.5 h-3.5 text-slate-700 flex-shrink-0" />
-              Arch Linux Systems
-            </span>
-          </div>
+            {/* Bio Paragraph */}
+            <p className="font-inter text-xs text-slate-700 leading-relaxed">
+              I engineer web applications, cloud infrastructure, and automation workflows. Based in Indonesia, working primarily with Linux terminal environments, Docker containers, Next.js, and Go.
+            </p>
 
-          {/* Clean Philosophy Footer */}
-          <div className="pt-3 border-t border-slate-200/70 flex items-center justify-between text-xs text-slate-500 font-inter">
-            <span>Engineering ethos</span>
-            <span className="font-bold text-sky-900">Clean architecture &amp; speed</span>
+            {/* Core Competencies Badges */}
+            <div className="flex flex-wrap gap-1.5 pt-0.5">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-50 border border-sky-200/80 text-sky-900 text-[11px] font-semibold">
+                <Code2 className="w-3 h-3 text-sky-600 flex-shrink-0" />
+                Web Apps (Next.js &amp; Go)
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-cyan-50 border border-cyan-200/80 text-cyan-900 text-[11px] font-semibold">
+                <Server className="w-3 h-3 text-cyan-600 flex-shrink-0" />
+                Cloud &amp; DevOps
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/80 text-emerald-900 text-[11px] font-semibold">
+                <MapPin className="w-3 h-3 text-emerald-600 flex-shrink-0" />
+                Indonesia
+              </span>
+            </div>
+
+            {/* Clean Status Bar */}
+            <div className="pt-2.5 border-t border-slate-200/70 flex items-center justify-between text-[11px] text-slate-500 font-inter">
+              <span>Engineering ethos</span>
+              <span className="font-bold text-sky-900">Clean architecture &amp; speed</span>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -131,7 +147,7 @@ export function AboutWindow() {
                     <User className="w-3 h-3 drop-shadow" />
                   </div>
                   <span className="font-outfit font-bold text-sm tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] truncate">
-                    About Me - Keefa&apos;s Profile
+                    About Me - Keefa Profile
                   </span>
                 </div>
 
@@ -210,8 +226,8 @@ export function AboutWindow() {
                       {/* Factual Highlights */}
                       <div className="flex flex-wrap gap-2 pt-3.5 border-t border-slate-100 mt-4">
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
-                          <Terminal className="w-3.5 h-3.5 text-sky-600" />
-                          Arch Linux &amp; Tiling WMs
+                          <Code2 className="w-3.5 h-3.5 text-sky-600" />
+                          Web Apps
                         </span>
                         <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
                           <Cloud className="w-3.5 h-3.5 text-cyan-600" />
