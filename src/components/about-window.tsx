@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { User, Minus, Square, X, MapPin, Cloud, RotateCcw, Code2, Server } from "lucide-react";
+import { User, Minus, Square, X, MapPin, Cloud, RotateCcw, Code2 } from "lucide-react";
 import Image from "next/image";
 
 export function AboutWindow() {
@@ -16,7 +16,7 @@ export function AboutWindow() {
     >
       {/* ============================================================== */}
       {/* MOBILE WINDOWS XP VIEW (visible on mobile < 640px)             */}
-      {/* Authentic classic window frame matching desktop aesthetic       */}
+      {/* Retains compact mobile avatar layout with desktop-aligned text */}
       {/* ============================================================== */}
       <div className="block sm:hidden w-full">
         <motion.div
@@ -53,7 +53,7 @@ export function AboutWindow() {
 
           {/* Window Body */}
           <div className="p-4 sm:p-5 flex flex-col gap-3.5">
-            {/* Profile Header with Real Avatar */}
+            {/* Profile Header with Mobile Avatar */}
             <div className="flex items-center gap-3">
               <div className="relative w-14 h-14 rounded-xl bg-gradient-to-tr from-sky-400 via-cyan-400 to-emerald-400 p-[2px] shadow-sm flex-shrink-0">
                 <div className="relative w-full h-full rounded-[10px] overflow-hidden bg-slate-900">
@@ -73,24 +73,29 @@ export function AboutWindow() {
                   Keefa Youra Pambudi
                 </h2>
                 <p className="text-[11px] font-semibold text-slate-600 mt-0.5">
-                  Software &amp; Cloud Engineer
+                  Software Engineer &amp; Infrastructure Developer
                 </p>
               </div>
             </div>
 
-            {/* Bio Paragraph */}
-            <p className="font-inter text-xs text-slate-700 leading-relaxed">
-              I engineer web applications, cloud infrastructure, and automation workflows. Based in Indonesia, working primarily with Linux terminal environments, Docker containers, Next.js, and Go.
-            </p>
+            {/* Bio Paragraphs (Identical to Desktop) */}
+            <div className="space-y-2 text-slate-700 font-inter text-xs leading-relaxed">
+              <p>
+                I build web applications, cloud infrastructure, and automation workflows. Based in Indonesia, I spend most of my time working in Linux terminal environments, configuring Docker containers, and writing code with Next.js, TypeScript, and Go.
+              </p>
+              <p>
+                Whether deploying services on cloud instances, designing relational databases, or scripting reproducible developer environments, I prioritize clean architecture, stability, and speed.
+              </p>
+            </div>
 
-            {/* Core Competencies Badges */}
+            {/* Core Competencies Badges (Identical to Desktop) */}
             <div className="flex flex-wrap gap-1.5 pt-0.5">
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-sky-50 border border-sky-200/80 text-sky-900 text-[11px] font-semibold">
                 <Code2 className="w-3 h-3 text-sky-600 flex-shrink-0" />
-                Web Apps (Next.js &amp; Go)
+                Web Apps
               </span>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-cyan-50 border border-cyan-200/80 text-cyan-900 text-[11px] font-semibold">
-                <Server className="w-3 h-3 text-cyan-600 flex-shrink-0" />
+                <Cloud className="w-3 h-3 text-cyan-600 flex-shrink-0" />
                 Cloud &amp; DevOps
               </span>
               <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200/80 text-emerald-900 text-[11px] font-semibold">

@@ -30,7 +30,7 @@ export function Hero() {
         transition={{ duration: 0.5, delay: 0.1 }}
         className="font-outfit font-bold text-base sm:text-xl md:text-2xl text-sky-950 mt-3 sm:mt-4 max-w-2xl px-1"
       >
-        Full-stack developer building scalable web apps, cloud infrastructure, and Linux systems.
+        Full-stack developer building scalable web apps, cloud infrastructure, and DevOps.
       </motion.p>
 
       {/* Description */}
@@ -40,7 +40,7 @@ export function Hero() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="font-inter text-xs sm:text-base md:text-lg text-slate-700 mt-3 sm:mt-5 max-w-2xl leading-relaxed px-1"
       >
-        Based in Indonesia. I work with Next.js, Go, Docker, and Kubernetes, combining modern cloud engineering with the nostalgic clarity of classic Web 2.0 aesthetics.
+        Based in Indonesia. I work with Coffee and enjoy to Create Somethingg.
       </motion.p>
 
       {/* Actions */}
