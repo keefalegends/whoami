@@ -232,13 +232,16 @@ export function ContactSection() {
         </motion.div>
       </div>
 
-      {/* Grounded Clean Footer inside the final slide */}
-      <div className="mt-5 sm:mt-12 pt-4 sm:pt-6 border-t border-sky-200/50 text-center w-full">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-1.5 text-xs text-slate-500 font-inter">
-          <p className="font-semibold text-slate-700">
-            Keefa Youra Pambudi &copy; 2026
-          </p>
-          <p className="text-slate-500">
+      {/* Grounded Windows XP Taskbar Footer */}
+      <div className="mt-5 sm:mt-10 w-full">
+        <div className="w-full rounded-xl sm:rounded-2xl overflow-hidden bg-xp-titlebar border border-white/50 shadow-xp-window px-4 py-2 sm:px-6 sm:py-2.5 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-white select-none">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+            <p className="font-outfit font-bold text-xs sm:text-sm text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
+              Keefa Youra Pambudi &copy; 2026
+            </p>
+          </div>
+          <p className="text-[11px] sm:text-xs text-sky-100 font-inter drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] text-center sm:text-right">
             Crafted with Next.js, Tailwind CSS &amp; Frutiger Aero Aesthetics.
           </p>
         </div>
