@@ -202,10 +202,10 @@ function ProjectCard({ project }: { project: Project }) {
               <ChevronRight className="w-4 h-4" />
             </button>
 
-            {/* Photo 1 / 2 Dots Indicator */}
+            {/* Photo 1 / 2 Dots Indicator (Mobile Only: Hidden on Desktop) */}
             <div
               onClick={(e) => e.stopPropagation()}
-              className="absolute bottom-2 right-2 z-10 flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold shadow-md"
+              className="md:hidden absolute bottom-2 right-2 z-10 flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 text-white text-[11px] font-bold shadow-md"
             >
               <button
                 onClick={() => setActiveImgIdx(0)}
@@ -460,10 +460,11 @@ export function ProjectsSection() {
       {/* EXPLORE MORE ON GITHUB BANNER                                  */}
       {/* ============================================================== */}
       <div className="mt-4 sm:mt-6 text-center w-full">
-        <div className="inline-flex flex-col sm:flex-row items-center justify-between gap-2.5 sm:gap-4 px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl bg-white/85 backdrop-blur-md border border-white/90 shadow-aero-card max-w-lg mx-auto">
+        {/* Desktop: Glass card container */}
+        <div className="hidden sm:inline-flex items-center justify-between gap-4 px-5 py-2.5 rounded-2xl bg-white/85 backdrop-blur-md border border-white/90 shadow-aero-card max-w-lg mx-auto">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-            <span className="font-inter text-xs font-semibold text-slate-700 text-center sm:text-left">
+            <span className="font-inter text-xs font-semibold text-slate-700">
               There are more projects, check my GitHub!
             </span>
           </div>
@@ -472,6 +473,25 @@ export function ProjectsSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 active:scale-95 transition-all shadow-sm flex-shrink-0"
+          >
+            <Github className="w-3.5 h-3.5" />
+            <span>GitHub @keefalegends &rarr;</span>
+          </a>
+        </div>
+
+        {/* Mobile: Clean without white box background */}
+        <div className="flex sm:hidden flex-col items-center gap-2 max-w-xs mx-auto">
+          <div className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+            <span className="font-inter text-xs font-semibold text-slate-700">
+              There are more projects, check my GitHub!
+            </span>
+          </div>
+          <a
+            href="https://github.com/keefalegends"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-bold hover:bg-slate-800 active:scale-95 transition-all shadow-md"
           >
             <Github className="w-3.5 h-3.5" />
             <span>GitHub @keefalegends &rarr;</span>
