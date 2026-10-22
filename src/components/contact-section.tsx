@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Github, MessageSquare, Minus, Square, X, CheckCircle2 } from "lucide-react";
+import { Send, Mail, Github, MessageSquare, Minus, Square, X, CheckCircle2, Linkedin, Instagram } from "lucide-react";
 import confetti from "canvas-confetti";
 
 export function ContactSection() {
@@ -36,10 +36,22 @@ export function ContactSection() {
       href: "https://github.com/keefalegends",
     },
     {
+      name: "LinkedIn",
+      handle: "keefa-youra-pambudi",
+      icon: Linkedin,
+      href: "https://www.linkedin.com/in/keefa-youra-pambudi-86a513433/",
+    },
+    {
+      name: "Instagram",
+      handle: "@keef4_y",
+      icon: Instagram,
+      href: "https://www.instagram.com/keef4_y/",
+    },
+    {
       name: "Email",
-      handle: "contact@keefa.dev",
+      handle: "keefayoura3@gmail.com",
       icon: Mail,
-      href: "mailto:contact@keefa.dev",
+      href: "mailto:keefayoura3@gmail.com",
     },
   ];
 
