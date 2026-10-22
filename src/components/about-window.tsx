@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { User, Minus, Square, X, MapPin, Cloud, Terminal, RotateCcw, Code2, Server } from "lucide-react";
+import Image from "next/image";
 
 export function AboutWindow() {
   const [minimized, setMinimized] = useState(false);
@@ -37,12 +38,20 @@ export function AboutWindow() {
             </span>
           </div>
 
-          {/* Profile Header */}
+          {/* Profile Header with Real Avatar */}
           <div className="flex items-center gap-3.5">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-sky-400 via-cyan-400 to-emerald-400 p-[2px] shadow-sm flex-shrink-0">
-              <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center text-sky-700">
-                <Terminal className="w-7 h-7 text-sky-600" />
+            <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-400 via-cyan-400 to-emerald-400 p-[2px] shadow-sm flex-shrink-0">
+              <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-900">
+                <Image
+                  src="/me.jpg"
+                  alt="Keefa Youra Pambudi"
+                  fill
+                  sizes="64px"
+                  className="object-cover object-[center_25%]"
+                />
               </div>
+              {/* Online pulse indicator */}
+              <span className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full bg-emerald-500 border-2 border-white shadow-sm flex items-center justify-center" />
             </div>
             <div className="min-w-0">
               <h2 className="font-outfit font-black text-xl text-slate-900 tracking-tight leading-tight">
@@ -157,52 +166,79 @@ export function AboutWindow() {
 
               {/* Window Content */}
               {!minimized && (
-                <div className="p-6 md:p-8">
-                  {/* Header Profile Row */}
-                  <div className="flex items-center gap-4 mb-5">
-                    <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-sky-400 via-cyan-400 to-emerald-400 p-[2px] shadow-sm flex-shrink-0">
-                      <div className="w-full h-full rounded-2xl bg-white flex flex-col items-center justify-center text-sky-800 p-1">
-                        <Terminal className="w-8 h-8 text-sky-600" />
-                        <span className="font-outfit font-black text-[11px] tracking-wider uppercase text-slate-800">
-                          KEEFA
-                        </span>
+                <div className="p-6 md:p-7">
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                    {/* Left Column: Vertical Portrait ID Card Frame */}
+                    <div className="md:col-span-4 flex justify-center">
+                      <div className="relative w-full aspect-[3/4] max-w-[210px] md:max-w-none rounded-2xl overflow-hidden p-[2.5px] bg-gradient-to-b from-sky-400 via-cyan-400 to-blue-500 shadow-aero-card group">
+                        <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-900">
+                          <Image
+                            src="/me.jpg"
+                            alt="Keefa Youra Pambudi"
+                            fill
+                            sizes="(max-width: 768px) 100vw, 240px"
+                            className="object-cover object-[center_25%] transition-transform duration-500 group-hover:scale-105"
+                          />
+                          {/* Subtle Aero Glass Gloss Overlay */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-white/10 pointer-events-none" />
+
+                          {/* ID Badge Pill inside Photo */}
+                          <div className="absolute bottom-2 left-2 right-2 p-1.5 rounded-xl bg-white/90 backdrop-blur-md border border-white/80 shadow-sm flex items-center justify-between">
+                            <div className="min-w-0">
+                              <p className="font-outfit font-extrabold text-[11px] text-slate-900 truncate">
+                                Keefa
+                              </p>
+                              <p className="text-[9px] text-slate-500 font-mono flex items-center gap-1">
+                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                Active System
+                              </p>
+                            </div>
+                            <span className="px-1.5 py-0.5 rounded bg-sky-100 text-sky-800 text-[9px] font-bold font-mono">
+                              ID: 01
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
-                    <div className="min-w-0">
-                      <h2 className="font-outfit font-black text-2xl md:text-3xl text-slate-900 tracking-tight truncate">
-                        Keefa Youra Pambudi
-                      </h2>
-                      <p className="text-sm font-semibold text-slate-600 mt-0.5">
-                        Software Engineer &amp; Infrastructure Developer
-                      </p>
+                    {/* Right Column: Profile Info, Bio & Badges */}
+                    <div className="md:col-span-8 flex flex-col justify-center">
+                      {/* Name & Title */}
+                      <div className="mb-3">
+                        <h2 className="font-outfit font-black text-2xl md:text-3xl text-slate-900 tracking-tight">
+                          Keefa Youra Pambudi
+                        </h2>
+                        <p className="text-xs md:text-sm font-semibold text-slate-600 mt-0.5">
+                          Software Engineer &amp; Infrastructure Developer
+                        </p>
+                      </div>
+
+                      {/* Bio Paragraphs */}
+                      <div className="space-y-2.5 text-slate-700 font-inter text-xs md:text-sm leading-relaxed">
+                        <p>
+                          I build web applications, cloud infrastructure, and automation workflows. Based in Indonesia, I spend most of my time working in Linux terminal environments, configuring Docker containers, and writing code with Next.js, TypeScript, and Go.
+                        </p>
+                        <p>
+                          Whether deploying services on cloud instances, designing relational databases, or scripting reproducible developer environments, I prioritize clean architecture, stability, and speed.
+                        </p>
+                      </div>
+
+                      {/* Factual Highlights */}
+                      <div className="flex flex-wrap gap-2 pt-3.5 border-t border-slate-100 mt-4">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
+                          <Terminal className="w-3.5 h-3.5 text-sky-600" />
+                          Arch Linux &amp; Tiling WMs
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
+                          <Cloud className="w-3.5 h-3.5 text-cyan-600" />
+                          Cloud &amp; DevOps
+                        </span>
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
+                          <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                          Indonesia
+                        </span>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Body Paragraphs */}
-                  <div className="space-y-3.5 text-slate-700 font-inter text-sm md:text-base leading-relaxed">
-                    <p>
-                      I build web applications, cloud infrastructure, and automation workflows. Based in Indonesia, I spend most of my time working in Linux terminal environments, configuring Docker containers, and writing code with Next.js, TypeScript, and Go.
-                    </p>
-                    <p>
-                      Whether deploying services on cloud instances, designing relational databases, or scripting reproducible developer environments, I prioritize clean architecture, stability, and speed.
-                    </p>
-                  </div>
-
-                  {/* Factual Highlights */}
-                  <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-100 mt-5">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
-                      <Terminal className="w-3.5 h-3.5 text-sky-600" />
-                      Arch Linux &amp; Tiling WMs
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
-                      <Cloud className="w-3.5 h-3.5 text-cyan-600" />
-                      Cloud &amp; DevOps
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
-                      <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-                      Indonesia
-                    </span>
                   </div>
                 </div>
               )}
