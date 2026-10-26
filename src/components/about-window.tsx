@@ -11,12 +11,10 @@ function CatMascot({ className = "" }: { className?: string }) {
   const [showBubble, setShowBubble] = useState(false);
 
   const messages = [
-    "meow~ 🐾",
-    "purr... ✨",
-    "keefa's pet 🐱",
-    "sudo feed me 🐟",
-    "compiling code... ⚙️",
-    "clean architecture! 🚀",
+    "meow",
+    "meowlll",
+    "rawwrrr",
+    "sudo feed me",
   ];
 
   const handleClick = () => {
