@@ -5,6 +5,72 @@ import { motion, AnimatePresence } from "framer-motion";
 import { User, Minus, Square, X, MapPin, Cloud, RotateCcw, Code2 } from "lucide-react";
 import Image from "next/image";
 
+// Interactive Cat Mascot perched on top of the window frame
+function CatMascot({ className = "" }: { className?: string }) {
+  const [msgIdx, setMsgIdx] = useState(0);
+  const [showBubble, setShowBubble] = useState(false);
+
+  const messages = [
+    "meow~ 🐾",
+    "purr... ✨",
+    "keefa's pet 🐱",
+    "compiling code... ⚙️",
+    "sudo feed me 🐟",
+    "clean architecture! 🚀",
+  ];
+
+  const handleClick = () => {
+    setMsgIdx((prev) => (prev + 1) % messages.length);
+    setShowBubble(true);
+  };
+
+  return (
+    <div
+      className={`absolute z-30 select-none cursor-pointer group ${className}`}
+      onClick={handleClick}
+      onMouseEnter={() => setShowBubble(true)}
+      onMouseLeave={() => setShowBubble(false)}
+      title="Click meow!"
+    >
+      {/* Speech Bubble */}
+      <AnimatePresence>
+        {showBubble && (
+          <motion.div
+            initial={{ opacity: 0, y: 4, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.9 }}
+            transition={{ duration: 0.15 }}
+            className="absolute -top-7 -left-3 pointer-events-none z-40"
+          >
+            <div className="bg-white/95 backdrop-blur-md border border-sky-300 text-[10px] font-mono font-bold text-sky-950 px-2 py-0.5 rounded-md shadow-sm whitespace-nowrap flex items-center gap-1">
+              <span>{messages[msgIdx]}</span>
+            </div>
+            <div className="w-1.5 h-1.5 bg-white/95 border-r border-b border-sky-300 transform rotate-45 mx-auto -mt-1" />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Cat Mascot Image */}
+      <motion.div
+        whileHover={{ scale: 1.1, y: -2 }}
+        whileTap={{ scale: 0.92, y: 1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        className="relative w-full h-full"
+      >
+        <Image
+          src="/pixel-cat.webp"
+          alt="Pixel Cat Mascot"
+          fill
+          sizes="64px"
+          className="object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)] select-none"
+          style={{ imageRendering: "pixelated" }}
+          priority
+        />
+      </motion.div>
+    </div>
+  );
+}
+
 export function AboutWindow() {
   const [minimized, setMinimized] = useState(false);
   const [closed, setClosed] = useState(false);
@@ -18,7 +84,10 @@ export function AboutWindow() {
       {/* MOBILE WINDOWS XP VIEW (visible on mobile < 640px)             */}
       {/* Retains compact mobile avatar layout with desktop-aligned text */}
       {/* ============================================================== */}
-      <div className="block sm:hidden w-full">
+      <div className="block sm:hidden w-full relative">
+        {/* Pixel Cat perched on top edge of mobile window */}
+        <CatMascot className="w-10 h-11 -top-10 right-16" />
+
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -138,116 +207,121 @@ export function AboutWindow() {
               </button>
             </motion.div>
           ) : (
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4 }}
-              className="rounded-2xl overflow-hidden shadow-xp-window border border-white/95 bg-white/90 backdrop-blur-xl transition-all duration-300 w-full"
-            >
-              {/* Windows XP Aero Title Bar */}
-              <div className="bg-xp-titlebar px-4 py-2.5 flex items-center justify-between select-none gap-2">
-                <div className="flex items-center gap-2 min-w-0 flex-1">
-                  <div className="w-5 h-5 rounded-full bg-sky-300/30 flex items-center justify-center text-white ring-1 ring-white/50 flex-shrink-0">
-                    <User className="w-3 h-3 drop-shadow" />
+            <div className="relative w-full">
+              {/* Pixel Cat perched on top edge of desktop window */}
+              <CatMascot className="w-13 h-14 -top-13 right-24" />
+
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4 }}
+                className="rounded-2xl overflow-hidden shadow-xp-window border border-white/95 bg-white/90 backdrop-blur-xl transition-all duration-300 w-full"
+              >
+                {/* Windows XP Aero Title Bar */}
+                <div className="bg-xp-titlebar px-4 py-2.5 flex items-center justify-between select-none gap-2">
+                  <div className="flex items-center gap-2 min-w-0 flex-1">
+                    <div className="w-5 h-5 rounded-full bg-sky-300/30 flex items-center justify-center text-white ring-1 ring-white/50 flex-shrink-0">
+                      <User className="w-3 h-3 drop-shadow" />
+                    </div>
+                    <span className="font-outfit font-bold text-sm tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] truncate">
+                      About Me - Keefa Profile
+                    </span>
                   </div>
-                  <span className="font-outfit font-bold text-sm tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] truncate">
-                    About Me - Keefa Profile
-                  </span>
+
+                  {/* Window Controls */}
+                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                    <button
+                      onClick={() => setMinimized(!minimized)}
+                      className="w-6 h-5 rounded-[4px] bg-gradient-to-b from-sky-400 to-sky-600 border border-sky-200/50 flex items-center justify-center text-white text-xs font-bold hover:brightness-110 active:brightness-90 transition-all shadow-inner"
+                      title="Minimize"
+                      aria-label="Minimize"
+                    >
+                      <Minus className="w-2.5 h-2.5" />
+                    </button>
+                    <button
+                      onClick={() => setMinimized(false)}
+                      className="w-6 h-5 rounded-[4px] bg-gradient-to-b from-sky-400 to-sky-600 border border-sky-200/50 flex items-center justify-center text-white text-xs font-bold hover:brightness-110 active:brightness-90 transition-all shadow-inner"
+                      title="Maximize"
+                      aria-label="Maximize"
+                    >
+                      <Square className="w-2.5 h-2.5" />
+                    </button>
+                    <button
+                      onClick={() => setClosed(true)}
+                      className="w-6 h-5 rounded-[4px] bg-gradient-to-b from-red-400 to-red-600 border border-red-300/60 flex items-center justify-center text-white text-xs font-bold hover:brightness-110 active:brightness-90 transition-all shadow-inner"
+                      title="Close"
+                      aria-label="Close"
+                    >
+                      <X className="w-2.5 h-2.5" />
+                    </button>
+                  </div>
                 </div>
 
-                {/* Window Controls */}
-                <div className="flex items-center gap-1.5 flex-shrink-0">
-                  <button
-                    onClick={() => setMinimized(!minimized)}
-                    className="w-6 h-5 rounded-[4px] bg-gradient-to-b from-sky-400 to-sky-600 border border-sky-200/50 flex items-center justify-center text-white text-xs font-bold hover:brightness-110 active:brightness-90 transition-all shadow-inner"
-                    title="Minimize"
-                    aria-label="Minimize"
-                  >
-                    <Minus className="w-2.5 h-2.5" />
-                  </button>
-                  <button
-                    onClick={() => setMinimized(false)}
-                    className="w-6 h-5 rounded-[4px] bg-gradient-to-b from-sky-400 to-sky-600 border border-sky-200/50 flex items-center justify-center text-white text-xs font-bold hover:brightness-110 active:brightness-90 transition-all shadow-inner"
-                    title="Maximize"
-                    aria-label="Maximize"
-                  >
-                    <Square className="w-2.5 h-2.5" />
-                  </button>
-                  <button
-                    onClick={() => setClosed(true)}
-                    className="w-6 h-5 rounded-[4px] bg-gradient-to-b from-red-400 to-red-600 border border-red-300/60 flex items-center justify-center text-white text-xs font-bold hover:brightness-110 active:brightness-90 transition-all shadow-inner"
-                    title="Close"
-                    aria-label="Close"
-                  >
-                    <X className="w-2.5 h-2.5" />
-                  </button>
-                </div>
-              </div>
+                {/* Window Content */}
+                {!minimized && (
+                  <div className="p-6 md:p-7">
+                    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                      {/* Left Column: Vertical Portrait ID Card Frame */}
+                      <div className="md:col-span-4 flex justify-center">
+                        <div className="relative w-full aspect-[3/4] max-w-[210px] md:max-w-none rounded-2xl overflow-hidden p-[2.5px] bg-gradient-to-b from-sky-400 via-cyan-400 to-blue-500 shadow-aero-card group">
+                          <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-900">
+                            <Image
+                              src="/me.webp"
+                              alt="Keefa Youra Pambudi"
+                              fill
+                              sizes="(max-width: 768px) 100vw, 240px"
+                              className="object-cover object-[center_60%] transition-transform duration-500 group-hover:scale-105"
+                            />
+                            {/* Subtle Aero Glass Gloss Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-white/10 pointer-events-none" />
+                          </div>
+                        </div>
+                      </div>
 
-              {/* Window Content */}
-              {!minimized && (
-                <div className="p-6 md:p-7">
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-                    {/* Left Column: Vertical Portrait ID Card Frame */}
-                    <div className="md:col-span-4 flex justify-center">
-                      <div className="relative w-full aspect-[3/4] max-w-[210px] md:max-w-none rounded-2xl overflow-hidden p-[2.5px] bg-gradient-to-b from-sky-400 via-cyan-400 to-blue-500 shadow-aero-card group">
-                        <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-900">
-                          <Image
-                            src="/me.webp"
-                            alt="Keefa Youra Pambudi"
-                            fill
-                            sizes="(max-width: 768px) 100vw, 240px"
-                            className="object-cover object-[center_60%] transition-transform duration-500 group-hover:scale-105"
-                          />
-                          {/* Subtle Aero Glass Gloss Overlay */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-white/10 pointer-events-none" />
+                      {/* Right Column: Profile Info, Bio & Badges */}
+                      <div className="md:col-span-8 flex flex-col justify-center">
+                        {/* Name & Title */}
+                        <div className="mb-3">
+                          <h2 className="font-outfit font-black text-2xl md:text-3xl text-slate-900 tracking-tight">
+                            Keefa Youra Pambudi
+                          </h2>
+                          <p className="text-xs md:text-sm font-semibold text-slate-600 mt-0.5">
+                            Software Engineer &amp; Infrastructure Developer
+                          </p>
+                        </div>
+
+                        {/* Bio Paragraphs */}
+                        <div className="space-y-2.5 text-slate-700 font-inter text-xs md:text-sm leading-relaxed">
+                          <p>
+                            I build web applications, cloud infrastructure, and automation workflows. Based in Indonesia, I spend most of my time working in Linux terminal environments, configuring Docker containers, and writing code with Next.js, TypeScript, and Go.
+                          </p>
+                          <p>
+                            Whether deploying services on cloud instances, designing relational databases, or scripting reproducible developer environments, I prioritize clean architecture, stability, and speed.
+                          </p>
+                        </div>
+
+                        {/* Factual Highlights */}
+                        <div className="flex flex-wrap gap-2 pt-3.5 border-t border-slate-100 mt-4">
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
+                            <Code2 className="w-3.5 h-3.5 text-sky-600" />
+                            Web Apps
+                          </span>
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
+                            <Cloud className="w-3.5 h-3.5 text-cyan-600" />
+                            Cloud &amp; DevOps
+                          </span>
+                          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
+                            <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+                            Indonesia
+                          </span>
                         </div>
                       </div>
                     </div>
-
-                    {/* Right Column: Profile Info, Bio & Badges */}
-                    <div className="md:col-span-8 flex flex-col justify-center">
-                      {/* Name & Title */}
-                      <div className="mb-3">
-                        <h2 className="font-outfit font-black text-2xl md:text-3xl text-slate-900 tracking-tight">
-                          Keefa Youra Pambudi
-                        </h2>
-                        <p className="text-xs md:text-sm font-semibold text-slate-600 mt-0.5">
-                          Software Engineer &amp; Infrastructure Developer
-                        </p>
-                      </div>
-
-                      {/* Bio Paragraphs */}
-                      <div className="space-y-2.5 text-slate-700 font-inter text-xs md:text-sm leading-relaxed">
-                        <p>
-                          I build web applications, cloud infrastructure, and automation workflows. Based in Indonesia, I spend most of my time working in Linux terminal environments, configuring Docker containers, and writing code with Next.js, TypeScript, and Go.
-                        </p>
-                        <p>
-                          Whether deploying services on cloud instances, designing relational databases, or scripting reproducible developer environments, I prioritize clean architecture, stability, and speed.
-                        </p>
-                      </div>
-
-                      {/* Factual Highlights */}
-                      <div className="flex flex-wrap gap-2 pt-3.5 border-t border-slate-100 mt-4">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
-                          <Code2 className="w-3.5 h-3.5 text-sky-600" />
-                          Web Apps
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
-                          <Cloud className="w-3.5 h-3.5 text-cyan-600" />
-                          Cloud &amp; DevOps
-                        </span>
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold">
-                          <MapPin className="w-3.5 h-3.5 text-emerald-600" />
-                          Indonesia
-                        </span>
-                      </div>
-                    </div>
                   </div>
-                </div>
-              )}
-            </motion.div>
+                )}
+              </motion.div>
+            </div>
           )}
         </AnimatePresence>
       </div>
