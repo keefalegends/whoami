@@ -62,7 +62,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="min-h-dvh flex flex-col justify-center snap-start relative py-8 sm:py-16 px-4 sm:px-6 max-w-5xl mx-auto z-10 w-full"
+      className="min-h-dvh flex flex-col justify-center relative py-12 sm:py-20 px-4 sm:px-6 max-w-5xl mx-auto z-10 w-full"
     >
       <div className="text-center mb-5 sm:mb-12">
         <h2 className="font-outfit font-black text-2xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight">
@@ -244,6 +244,15 @@ export function ContactSection() {
             <p className="font-outfit font-bold text-xs sm:text-sm text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)]">
               Keefa Youra Pambudi &copy; 2026
             </p>
+            <a
+              href="https://github.com/keefalegends/whoami/releases/tag/v1.0.0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-2 py-0.5 rounded-md bg-white/15 hover:bg-white/25 border border-white/25 text-[10px] font-mono font-bold tracking-wider text-sky-100 transition-colors"
+              title="Release v1.0.0 on GitHub"
+            >
+              v1.0.0
+            </a>
           </div>
           <p className="text-[11px] sm:text-xs text-sky-100 font-inter drop-shadow-[0_1px_2px_rgba(0,0,0,0.6)] text-center sm:text-right">
             Crafted with Next.js, Tailwind CSS &amp; Frutiger Aero Aesthetics.

@@ -12,7 +12,7 @@ export function AboutWindow() {
   return (
     <section
       id="about"
-      className="min-h-dvh flex flex-col justify-center snap-start relative py-8 sm:py-16 px-4 sm:px-6 max-w-4xl mx-auto z-10 w-full"
+      className="min-h-dvh flex flex-col justify-center relative py-12 sm:py-20 px-4 sm:px-6 max-w-4xl mx-auto z-10 w-full"
     >
       {/* ============================================================== */}
       {/* MOBILE WINDOWS XP VIEW (visible on mobile < 640px)             */}

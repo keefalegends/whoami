@@ -5,7 +5,6 @@ import { SideNav } from "@/components/side-nav";
 import { Hero } from "@/components/hero";
 import { AboutWindow } from "@/components/about-window";
 import { StackSection } from "@/components/stack-section";
-import { FullpageSlider } from "@/components/fullpage-slider";
 
 const ProjectsSection = dynamic(
   () => import("@/components/projects-section").then((mod) => mod.ProjectsSection),
@@ -20,9 +19,6 @@ const ContactSection = dynamic(
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
-      {/* GSAP Fullpage Slide Controller */}
-      <FullpageSlider />
-
       {/* Dynamic Background Atmosphere */}
       <AmbientBackground />
 
@@ -35,7 +31,7 @@ export default function Home() {
       {/* 1. Hero Slide */}
       <Hero />
 
-      {/* 2. About Slide - Redesigned Mobile & Desktop */}
+      {/* 2. About Slide */}
       <AboutWindow />
 
       {/* 3. Tech Stack Slide */}

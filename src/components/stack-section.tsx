@@ -38,7 +38,7 @@ export function StackSection() {
   return (
     <section
       id="stack"
-      className="min-h-dvh flex flex-col justify-center snap-start relative py-12 sm:py-16 px-4 sm:px-6 max-w-6xl mx-auto z-10 w-full"
+      className="min-h-dvh flex flex-col justify-center relative py-12 sm:py-20 px-4 sm:px-6 max-w-6xl mx-auto z-10 w-full"
     >
       <div className="text-center mb-8 sm:mb-12">
         <h2 className="font-outfit font-black text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight">

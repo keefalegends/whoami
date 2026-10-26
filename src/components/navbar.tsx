@@ -70,25 +70,10 @@ export function Navbar() {
       lastScrollY = currentY;
     };
 
-    // FullpageSlider custom events
-    const handleNavbarClose = () => {
-      setIsOpen(false);
-    };
-
-    const handleNavbarOpen = () => {
-      if (window.innerWidth >= 768) {
-        setIsOpen(true);
-      }
-    };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("navbar-close", handleNavbarClose);
-    window.addEventListener("navbar-open", handleNavbarOpen);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("navbar-close", handleNavbarClose);
-      window.removeEventListener("navbar-open", handleNavbarOpen);
     };
   }, []);
 

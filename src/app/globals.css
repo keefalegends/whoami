@@ -8,8 +8,8 @@
 }
 
 html {
-  /* Scroll behavior and slide snapping are controlled via GSAP FullpageSlider */
-  scroll-padding-top: 5.5rem;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {

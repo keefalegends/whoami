@@ -8,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="min-h-dvh flex flex-col justify-center items-center text-center snap-start relative pt-20 pb-12 px-4 sm:px-6 max-w-4xl mx-auto z-10 w-full"
+      className="min-h-dvh flex flex-col justify-center items-center text-center relative pt-20 pb-12 px-4 sm:px-6 max-w-4xl mx-auto z-10 w-full"
     >
       {/* Main Title */}
       <motion.h1
