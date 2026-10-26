@@ -14,8 +14,8 @@ function CatMascot({ className = "" }: { className?: string }) {
     "meow~ 🐾",
     "purr... ✨",
     "keefa's pet 🐱",
-    "compiling code... ⚙️",
     "sudo feed me 🐟",
+    "compiling code... ⚙️",
     "clean architecture! 🚀",
   ];
 
@@ -40,9 +40,9 @@ function CatMascot({ className = "" }: { className?: string }) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 4, scale: 0.9 }}
             transition={{ duration: 0.15 }}
-            className="absolute -top-7 -left-3 pointer-events-none z-40"
+            className="absolute -top-8 left-1/2 -translate-x-1/2 pointer-events-none z-40"
           >
-            <div className="bg-white/95 backdrop-blur-md border border-sky-300 text-[10px] font-mono font-bold text-sky-950 px-2 py-0.5 rounded-md shadow-sm whitespace-nowrap flex items-center gap-1">
+            <div className="bg-white/95 backdrop-blur-md border border-sky-300 text-[11px] font-mono font-bold text-sky-950 px-2.5 py-1 rounded-md shadow-md whitespace-nowrap flex items-center gap-1">
               <span>{messages[msgIdx]}</span>
             </div>
             <div className="w-1.5 h-1.5 bg-white/95 border-r border-b border-sky-300 transform rotate-45 mx-auto -mt-1" />
@@ -85,8 +85,8 @@ export function AboutWindow() {
       {/* Retains compact mobile avatar layout with desktop-aligned text */}
       {/* ============================================================== */}
       <div className="block sm:hidden w-full relative">
-        {/* Pixel Cat perched on top edge of mobile window */}
-        <CatMascot className="w-10 h-11 -top-10 right-16" />
+        {/* Pixel Cat perched on top edge of mobile window - enlarged */}
+        <CatMascot className="w-[62px] h-[67px] -top-[65px] right-14" />
 
         <motion.div
           initial={{ opacity: 0, y: 15 }}
@@ -208,8 +208,8 @@ export function AboutWindow() {
             </motion.div>
           ) : (
             <div className="relative w-full">
-              {/* Pixel Cat perched on top edge of desktop window */}
-              <CatMascot className="w-13 h-14 -top-13 right-24" />
+              {/* Pixel Cat perched on top edge of desktop window - enlarged */}
+              <CatMascot className="w-[96px] h-[104px] sm:w-[108px] sm:h-[117px] -top-[102px] sm:-top-[115px] right-24 sm:right-32" />
 
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
