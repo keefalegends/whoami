@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Send, Mail, Github, MessageSquare, Minus, Square, X, CheckCircle2, Linkedin, Instagram } from "lucide-react";
+import { Send, Mail, Github, MessageSquare, Minus, Square, X, CheckCircle2, Linkedin, Instagram, Loader2, AlertCircle, RotateCcw } from "lucide-react";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -10,26 +10,60 @@ export function ContactSection() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    const accessKey =
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ||
+      "a6437136-be11-45dc-93cb-6e8d16362498";
+
     try {
-      const confetti = (await import("canvas-confetti")).default;
-      confetti({
-        particleCount: 60,
-        spread: 50,
-        origin: { y: 0.7 },
-        colors: ["#38bdf8", "#22d3ee", "#4ade80", "#ffffff"],
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `[Portfolio Message] From ${formData.name}`,
+          from_name: `${formData.name} (via Portfolio)`,
+        }),
       });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitted(true);
+        setFormData({ name: "", email: "", message: "" });
+        try {
+          const confetti = (await import("canvas-confetti")).default;
+          confetti({
+            particleCount: 60,
+            spread: 50,
+            origin: { y: 0.7 },
+            colors: ["#38bdf8", "#22d3ee", "#4ade80", "#ffffff"],
+          });
+        } catch {
+          // Fallback gracefully if confetti fails
+        }
+      } else {
+        setErrorMessage(result.message || "Failed to send message. Please try again.");
+      }
     } catch {
-      // Fallback gracefully if confetti fails
+      setErrorMessage("Network error. Please try again or reach out directly via email.");
+    } finally {
+      setIsSubmitting(false);
     }
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", message: "" });
-    }, 4000);
   };
 
   const socials = [
@@ -112,20 +146,46 @@ export function ContactSection() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="py-6 sm:py-10 text-center space-y-2 sm:space-y-3"
+                className="py-6 sm:py-10 text-center space-y-2.5 sm:space-y-3.5"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
+                <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-emerald-100 border border-emerald-400 text-emerald-600 flex items-center justify-center mx-auto shadow-sm">
                   <CheckCircle2 className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
                 <h3 className="font-outfit font-black text-base sm:text-xl text-slate-900">
-                  Message Sent
+                  Message Sent!
                 </h3>
-                <p className="text-xs sm:text-sm font-inter text-slate-600 max-w-sm mx-auto">
-                  Thank you for reaching out. I will get back to your message shortly.
+                <p className="text-xs sm:text-sm font-inter text-slate-600 max-w-sm mx-auto leading-relaxed">
+                  Thank you for reaching out. Your message has been sent to Keefa&apos;s email (<span className="font-semibold text-slate-800">keefayoura3@gmail.com</span>). I will respond as soon as possible!
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="mt-2 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300 text-slate-700 text-xs font-semibold transition-colors"
+                >
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Send Another Message</span>
+                </button>
               </motion.div>
             ) : (
               <>
+                {errorMessage && (
+                  <div className="p-2.5 rounded-lg bg-red-50 border border-red-200 text-red-700 text-xs flex items-center justify-between gap-2">
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0 text-red-500" />
+                      <span className="truncate">{errorMessage}</span>
+                    </div>
+                    <a
+                      href={`mailto:keefayoura3@gmail.com?subject=Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}`}
+                      className="text-xs font-bold text-red-800 underline whitespace-nowrap"
+                    >
+                      Direct Email
+                    </a>
+                  </div>
+                )}
+
+                {/* Honeypot spam field for Web3Forms */}
+                <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
+
                 <div>
                   <label htmlFor="name-input" className="block text-[11px] sm:text-xs font-bold text-slate-700 mb-0.5 sm:mb-1">
                     Your Name
@@ -174,10 +234,20 @@ export function ContactSection() {
                 <div className="pt-0.5 sm:pt-1">
                   <button
                     type="submit"
-                    className="w-full py-2 sm:py-3 px-4 rounded-lg bg-gradient-to-b from-sky-500 to-sky-700 text-white font-bold text-xs sm:text-sm shadow-md hover:from-sky-400 hover:to-sky-600 active:scale-[0.99] transition-all flex items-center justify-center gap-2 min-h-[38px] sm:min-h-[44px]"
+                    disabled={isSubmitting}
+                    className="w-full py-2 sm:py-3 px-4 rounded-lg bg-gradient-to-b from-sky-500 to-sky-700 text-white font-bold text-xs sm:text-sm shadow-md hover:from-sky-400 hover:to-sky-600 active:scale-[0.99] disabled:opacity-75 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 min-h-[38px] sm:min-h-[44px]"
                   >
-                    <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                    <span>Send Message</span>
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 animate-spin" />
+                        <span>Sending Message...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                        <span>Send Message</span>
+                      </>
+                    )}
                   </button>
                 </div>
               </>
