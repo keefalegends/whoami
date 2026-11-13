@@ -19,13 +19,12 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Keefa Youra Pambudi | Keefa. Portfolio",
   description:
-    "Full-Stack Developer · DevOps Enthusiast · Linux User based in Indonesia. Exploring the crisp aquatic Frutiger Aero aesthetic with high performance web tech.",
+    "Full-Stack Developer · DevOps Enthusiast · based in Indonesia. Exploring the crisp aquatic Frutiger Aero aesthetic.",
   keywords: [
     "Keefa Youra Pambudi",
     "Keefa.",
     "Full-Stack Developer",
     "DevOps",
-    "Linux Enthusiast",
     "Frutiger Aero Portfolio",
     "Indonesia Developer",
   ],
@@ -33,8 +32,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Keefa Youra Pambudi | Keefa.",
     description:
-      "Full-Stack Developer · DevOps Enthusiast · Linux User. Built with nostalgic Frutiger Aero aqua aesthetic.",
-    url: "https://keefaos.dev",
+      "Full-Stack Developer · DevOps Enthusiast. Personal Portofolio.",
+    url: "https://whoami-six.vercel.app/",
     siteName: "Keefa. Portfolio",
     locale: "id_ID",
     type: "website",
